@@ -1,0 +1,89 @@
+  method /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITY.
+   DATA(lv_entityname) = io_tech_request_context->get_entity_type_name( ).
+    CASE lv_entityname.
+      WHEN 'ShipToPartyItemNode'.
+        TRY.
+            SHIPTO_ITEMNODES_GET_ENTITY(
+              EXPORTING
+                iv_entity_name          = iv_entity_name
+                iv_entity_set_name      = iv_entity_set_name
+                iv_source_name          = iv_source_name
+                it_key_tab              = it_key_tab
+*               io_request_object       = io_request_object
+                io_tech_request_context = io_tech_request_context
+                it_navigation_path      = it_navigation_path
+              IMPORTING
+                er_entity               = DATA(ls_entity1)
+                es_response_context     = es_response_context
+                ).
+          CATCH /iwbep/cx_mgw_busi_exception.
+          CATCH /iwbep/cx_mgw_tech_exception.
+        ENDTRY.
+
+        IF ls_entity1 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = ls_entity1 CHANGING cr_data = er_entity ) .
+        ENDIF.
+
+        WHEN 'POSubcontractingComponent'.
+        TRY.
+            SUBCONTRACTING_COMP_GET_ENTITY(
+              EXPORTING
+                iv_entity_name          = iv_entity_name
+                iv_entity_set_name      = iv_entity_set_name
+                iv_source_name          = iv_source_name
+                it_key_tab              = it_key_tab
+*               io_request_object       = io_request_object
+                io_tech_request_context = io_tech_request_context
+                it_navigation_path      = it_navigation_path
+              IMPORTING
+                er_entity               = DATA(ls_entity2)
+                es_response_context     = es_response_context
+                ).
+          CATCH /iwbep/cx_mgw_busi_exception.
+          CATCH /iwbep/cx_mgw_tech_exception.
+        ENDTRY.
+
+        IF ls_entity2 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = ls_entity2 CHANGING cr_data = er_entity ) .
+        ENDIF.
+
+
+
+      WHEN OTHERS.
+
+        TRY.
+            CALL METHOD super->/iwbep/if_mgw_appl_srv_runtime~get_entity
+              EXPORTING
+                iv_entity_name          = iv_entity_name
+                iv_entity_set_name      = iv_entity_set_name
+                iv_source_name          = iv_source_name
+                it_key_tab              = it_key_tab
+                it_navigation_path      = it_navigation_path
+                io_tech_request_context = io_tech_request_context
+              IMPORTING
+                er_entity               = er_entity
+                es_response_context     = es_response_context.
+          CATCH /iwbep/cx_mgw_busi_exception.
+          CATCH /iwbep/cx_mgw_tech_exception.
+        ENDTRY.
+    ENDCASE.
+
+
+
+**TRY.
+*CALL METHOD SUPER->/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITY
+**  EXPORTING
+**    iv_entity_name          =
+**    iv_entity_set_name      =
+**    iv_source_name          =
+**    it_key_tab              =
+**    it_navigation_path      =
+**    io_tech_request_context =
+**  IMPORTING
+**    er_entity               =
+**    es_response_context     =
+*    .
+**  CATCH /iwbep/cx_mgw_busi_exception.
+**  CATCH /iwbep/cx_mgw_tech_exception.
+**ENDTRY.
+  endmethod.
