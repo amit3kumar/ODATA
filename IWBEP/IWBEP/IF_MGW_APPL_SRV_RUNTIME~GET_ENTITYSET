@@ -1,0 +1,192 @@
+*&---------------------------------------------------------------------*
+*& Redefined Method         /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar,Jyothi Mariya
+* Creation Date:  07/04/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+  method /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET.
+
+
+        DATA(lv_entityname) = io_tech_request_context->get_entity_set_name( ).
+
+    CASE lv_entityname.
+
+      WHEN 'PurchaseOrderItemInvoicingPlanNodeSet'.
+        INVOICING_GET_ENTITYSET(
+          EXPORTING
+            iv_entity_name               =   iv_entity_name
+            iv_entity_set_name           =   iv_entity_set_name
+            iv_source_name               =   iv_source_name
+            it_filter_select_options     =   it_filter_select_options
+            is_paging                    =   is_paging
+            it_key_tab                   =   it_key_tab
+            it_navigation_path           =   it_navigation_path
+            it_order                     =   it_order
+            iv_filter_string             =   iv_filter_string
+            iv_search_string             =   iv_search_string
+            io_tech_request_context      =   io_tech_request_context
+          IMPORTING
+            et_entityset                 = DATA(lt_entityset)
+            es_response_context          = es_response_context
+        ).
+*          CATCH /iwbep/cx_mgw_busi_exception.    "
+*          CATCH /iwbep/cx_mgw_tech_exception.    " /
+
+        IF lt_entityset IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = lt_entityset CHANGING cr_data = er_entityset ) .
+        ENDIF.
+      WHEN 'PurchaseOrderHeaderNodeSet'.
+        PO_HEADERNODE_GET_ENTITYSET(
+          EXPORTING
+            iv_entity_name               =   iv_entity_name
+            iv_entity_set_name           =   iv_entity_set_name
+            iv_source_name               =   iv_source_name
+            it_filter_select_options     =   it_filter_select_options
+            is_paging                    =   is_paging
+            it_key_tab                   =   it_key_tab
+            it_navigation_path           =   it_navigation_path
+            it_order                     =   it_order
+            iv_filter_string             =   iv_filter_string
+            iv_search_string             =   iv_search_string
+            io_tech_request_context      =   io_tech_request_context
+          IMPORTING
+            et_entityset                 = DATA(lt_entityset1)
+            es_response_context          = es_response_context
+        ).
+*          CATCH /iwbep/cx_mgw_busi_exception.    "
+*          CATCH /iwbep/cx_mgw_tech_exception.    " /
+
+        IF lt_entityset1 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = lt_entityset1 CHANGING cr_data = er_entityset ) .
+        ENDIF.
+
+        WHEN 'PurchaseOrderFooterTextSet'.
+        PO_FOOTERTEXT_GET_ENTITYSET(
+          EXPORTING
+            iv_entity_name               =   iv_entity_name
+            iv_entity_set_name           =   iv_entity_set_name
+            iv_source_name               =   iv_source_name
+            it_filter_select_options     =   it_filter_select_options
+            is_paging                    =   is_paging
+            it_key_tab                   =   it_key_tab
+            it_navigation_path           =   it_navigation_path
+            it_order                     =   it_order
+            iv_filter_string             =   iv_filter_string
+            iv_search_string             =   iv_search_string
+            io_tech_request_context      =   io_tech_request_context
+          IMPORTING
+            et_entityset                 = DATA(lt_entityset2)
+            es_response_context          = es_response_context
+        ).
+*          CATCH /iwbep/cx_mgw_busi_exception.    "
+*          CATCH /iwbep/cx_mgw_tech_exception.    " /
+
+        IF lt_entityset2 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = lt_entityset2 CHANGING cr_data = er_entityset ) .
+        ENDIF.
+
+*        WHEN 'POSubcontractingComponentCustomNodeSet'.
+*        POSUBCOMP_GET_ENTITYSET(
+*          EXPORTING
+*            iv_entity_name               =   iv_entity_name
+*            iv_entity_set_name           =   iv_entity_set_name
+*            iv_source_name               =   iv_source_name
+*            it_filter_select_options     =   it_filter_select_options
+*            is_paging                    =   is_paging
+*            it_key_tab                   =   it_key_tab
+*            it_navigation_path           =   it_navigation_path
+*            it_order                     =   it_order
+*            iv_filter_string             =   iv_filter_string
+*            iv_search_string             =   iv_search_string
+*            io_tech_request_context      =   io_tech_request_context
+*          IMPORTING
+*            et_entityset                 = DATA(lt_entityset3)
+*            es_response_context          = es_response_context
+*        ).
+**          CATCH /iwbep/cx_mgw_busi_exception.    "
+**          CATCH /iwbep/cx_mgw_tech_exception.    " /
+*
+*        IF lt_entityset2 IS NOT INITIAL.
+*          copy_data_to_ref( EXPORTING is_data = lt_entityset3 CHANGING cr_data = er_entityset ) .
+*        ENDIF.
+
+
+
+
+"PO_FOOTERTEXT_GET_ENTITYSET
+      WHEN OTHERS.
+        TRY.
+
+            CALL METHOD super->/iwbep/if_mgw_appl_srv_runtime~get_entityset
+              EXPORTING
+                iv_entity_name           = iv_entity_name
+                iv_entity_set_name       = iv_entity_set_name
+                iv_source_name           = iv_source_name
+                it_filter_select_options = it_filter_select_options
+                it_order                 = it_order
+                is_paging                = is_paging
+                it_navigation_path       = it_navigation_path
+                it_key_tab               = it_key_tab
+                iv_filter_string         = iv_filter_string
+                iv_search_string         = iv_search_string
+                io_tech_request_context  = io_tech_request_context
+              IMPORTING
+                er_entityset             = er_entityset
+                es_response_context      = es_response_context.
+
+          CATCH /iwbep/cx_mgw_busi_exception .
+          CATCH /iwbep/cx_mgw_tech_exception .
+
+        ENDTRY.
+
+    ENDCASE.
+
+
+
+
+
+
+
+
+
+
+
+**TRY.
+*CALL METHOD SUPER->/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET
+**  EXPORTING
+**    iv_entity_name           =
+**    iv_entity_set_name       =
+**    iv_source_name           =
+**    it_filter_select_options =
+**    it_order                 =
+**    is_paging                =
+**    it_navigation_path       =
+**    it_key_tab               =
+**    iv_filter_string         =
+**    iv_search_string         =
+**    io_tech_request_context  =
+**  IMPORTING
+**    er_entityset             =
+**    es_response_context      =
+*    .
+**  CATCH /iwbep/cx_mgw_busi_exception.
+**  CATCH /iwbep/cx_mgw_tech_exception.
+**ENDTRY.
+  endmethod.
