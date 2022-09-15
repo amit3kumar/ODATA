@@ -1,0 +1,95 @@
+  METHOD suppliers_get_entity.
+*&---------------------------------------------------------------------*
+*& Method         SUPPLIERS_GET_ENTITY
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+
+* Developer:      Amit Kumar
+* Creation Date:  08/30/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+    DATA ls_po_key     TYPE /iwbep/s_mgw_name_value_pair.
+    DATA lv_adrnr      TYPE adrnr.
+
+    CLEAR: er_entity,
+           es_response_context.
+
+
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+
+    IF ls_po_key-value IS NOT INITIAL.
+      SELECT SINGLE ebeln,bukrs,lifnr
+        FROM ekko
+        INTO @DATA(ls_address)
+        WHERE ebeln EQ @ls_po_key-value.
+      IF sy-subrc EQ 0.
+        SELECT SINGLE lifnr, adrnr
+          FROM lfa1
+          INTO @DATA(ls_adrnr)
+          WHERE lifnr EQ @ls_address-lifnr.
+        IF sy-subrc EQ 0.
+
+        ENDIF.
+
+      ENDIF.
+* Retrieve PO Address from PO Header CDS (contains PO Address in case it deviates from the supplier address)
+*      SELECT SINGLE manualsupplieraddressID  ##WARN_OK
+*        FROM i_purchaseorder
+*        INTO @lv_adrnr
+*        WHERE purchaseorder = @ls_po_key-value  ##DB_FEATURE_MODE[AMDP_TABLE_FUNCTION].
+
+* in case PO Address is filled, overwrite supplier master address
+      IF ls_adrnr IS NOT INITIAL.
+        er_entity-adrnr = ls_adrnr-adrnr.
+      ENDIF.
+
+      IF er_entity-adrnr IS NOT INITIAL.
+* retrieve address line 1 - 8
+        SELECT SINGLE * FROM adrc INTO @DATA(lv_adrc) WHERE addrnumber = @er_entity-adrnr.
+        IF sy-subrc EQ 0.
+          SELECT SINGLE spras , land1 ,landx
+            FROM t005t
+            INTO @DATA(ls_country)
+            WHERE  land1 = @lv_adrc-country
+            AND spras EQ @lv_adrc-langu.
+          IF sy-subrc EQ 0.
+          ENDIF.
+          IF ls_address-bukrs NE '1710'.
+
+            SELECT SINGLE spras,land1,bland,bezei
+              FROM t005u
+              INTO @DATA(ls_region)
+              WHERE spras EQ @lv_adrc-langu
+              AND land1 = @lv_adrc-country
+              AND bland = @lv_adrc-region.
+            IF sy-subrc EQ 0.
+            ENDIF.
+          ENDIF.
+
+          er_entity-address_line_1 = lv_adrc-name1.
+          er_entity-address_line_2 = lv_adrc-str_suppl1.
+          er_entity-address_line_3 = lv_adrc-str_suppl2.
+          er_entity-address_line_4 = lv_adrc-house_num1 && | | && lv_adrc-street.
+          er_entity-address_line_5 = lv_adrc-str_suppl3.
+          er_entity-address_line_6 = lv_adrc-location.
+          er_entity-address_line_7 = lv_adrc-city1 && | | && lv_adrc-city2
+                                      && | | &&  ls_region-bezei && | | && lv_adrc-post_code1.
+          er_entity-address_line_8 = ls_country-landx.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+
+  ENDMETHOD.
