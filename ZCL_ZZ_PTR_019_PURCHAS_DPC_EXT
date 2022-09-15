@@ -1,0 +1,1975 @@
+class ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT definition
+  public
+  inheriting from ZCL_ZZ_PTR_019_PURCHAS_DPC
+  create public .
+
+public section.
+
+  methods /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITY
+    redefinition .
+  methods /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET
+    redefinition .
+protected section.
+
+  methods INVOICING_GET_ENTITYSET
+    importing
+      !IV_ENTITY_NAME type STRING
+      !IV_ENTITY_SET_NAME type STRING
+      !IV_SOURCE_NAME type STRING
+      !IT_FILTER_SELECT_OPTIONS type /IWBEP/T_MGW_SELECT_OPTION
+      !IS_PAGING type /IWBEP/S_MGW_PAGING
+      !IT_KEY_TAB type /IWBEP/T_MGW_NAME_VALUE_PAIR
+      !IT_NAVIGATION_PATH type /IWBEP/T_MGW_NAVIGATION_PATH
+      !IT_ORDER type /IWBEP/T_MGW_SORTING_ORDER
+      !IV_FILTER_STRING type STRING
+      !IV_SEARCH_STRING type STRING
+      !IO_TECH_REQUEST_CONTEXT type ref to /IWBEP/IF_MGW_REQ_ENTITYSET optional
+    exporting
+      !ET_ENTITYSET type ZCL_ZZ_PTR_019_PURCHAS_MPC=>TT_PURCHASEORDERITEMINVOICINGP
+      !ES_RESPONSE_CONTEXT type /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+    raising
+      /IWBEP/CX_MGW_BUSI_EXCEPTION
+      /IWBEP/CX_MGW_TECH_EXCEPTION .
+  methods PO_HEADERNODE_GET_ENTITYSET
+    importing
+      !IV_ENTITY_NAME type STRING
+      !IV_ENTITY_SET_NAME type STRING
+      !IV_SOURCE_NAME type STRING
+      !IT_FILTER_SELECT_OPTIONS type /IWBEP/T_MGW_SELECT_OPTION
+      !IS_PAGING type /IWBEP/S_MGW_PAGING
+      !IT_KEY_TAB type /IWBEP/T_MGW_NAME_VALUE_PAIR
+      !IT_NAVIGATION_PATH type /IWBEP/T_MGW_NAVIGATION_PATH
+      !IT_ORDER type /IWBEP/T_MGW_SORTING_ORDER
+      !IV_FILTER_STRING type STRING
+      !IV_SEARCH_STRING type STRING
+      !IO_TECH_REQUEST_CONTEXT type ref to /IWBEP/IF_MGW_REQ_ENTITYSET optional
+    exporting
+      !ET_ENTITYSET type ZCL_ZZ_PTR_019_PURCHAS_MPC=>TT_PURCHASEORDERHEADERNODE
+      !ES_RESPONSE_CONTEXT type /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+    raising
+      /IWBEP/CX_MGW_BUSI_EXCEPTION
+      /IWBEP/CX_MGW_TECH_EXCEPTION .
+  methods PO_FOOTERTEXT_GET_ENTITYSET
+    importing
+      !IV_ENTITY_NAME type STRING
+      !IV_ENTITY_SET_NAME type STRING
+      !IV_SOURCE_NAME type STRING
+      !IT_FILTER_SELECT_OPTIONS type /IWBEP/T_MGW_SELECT_OPTION
+      !IS_PAGING type /IWBEP/S_MGW_PAGING
+      !IT_KEY_TAB type /IWBEP/T_MGW_NAME_VALUE_PAIR
+      !IT_NAVIGATION_PATH type /IWBEP/T_MGW_NAVIGATION_PATH
+      !IT_ORDER type /IWBEP/T_MGW_SORTING_ORDER
+      !IV_FILTER_STRING type STRING
+      !IV_SEARCH_STRING type STRING
+      !IO_TECH_REQUEST_CONTEXT type ref to /IWBEP/IF_MGW_REQ_ENTITYSET optional
+    exporting
+      !ET_ENTITYSET type ZCL_ZZ_PTR_019_PURCHAS_MPC=>TT_PURCHASEORDERFOOTERTEXT
+      !ES_RESPONSE_CONTEXT type /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+    raising
+      /IWBEP/CX_MGW_BUSI_EXCEPTION
+      /IWBEP/CX_MGW_TECH_EXCEPTION .
+  methods SHIPTO_ITEMNODES_GET_ENTITY
+    importing
+      !IV_ENTITY_NAME type STRING
+      !IV_ENTITY_SET_NAME type STRING
+      !IV_SOURCE_NAME type STRING
+      !IT_KEY_TAB type /IWBEP/T_MGW_NAME_VALUE_PAIR
+      !IO_REQUEST_OBJECT type ref to /IWBEP/IF_MGW_REQ_ENTITY optional
+      !IO_TECH_REQUEST_CONTEXT type ref to /IWBEP/IF_MGW_REQ_ENTITY optional
+      !IT_NAVIGATION_PATH type /IWBEP/T_MGW_NAVIGATION_PATH
+    exporting
+      !ER_ENTITY type ZCL_ZZ_PTR_019_PURCHAS_MPC=>TS_SHIPTOPARTYITEMNODE
+      !ES_RESPONSE_CONTEXT type /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+    raising
+      /IWBEP/CX_MGW_BUSI_EXCEPTION
+      /IWBEP/CX_MGW_TECH_EXCEPTION .
+  methods SUBCONTRACTING_COMP_GET_ENTITY
+    importing
+      !IV_ENTITY_NAME type STRING
+      !IV_ENTITY_SET_NAME type STRING
+      !IV_SOURCE_NAME type STRING
+      !IT_KEY_TAB type /IWBEP/T_MGW_NAME_VALUE_PAIR
+      !IO_REQUEST_OBJECT type ref to /IWBEP/IF_MGW_REQ_ENTITY optional
+      !IO_TECH_REQUEST_CONTEXT type ref to /IWBEP/IF_MGW_REQ_ENTITY optional
+      !IT_NAVIGATION_PATH type /IWBEP/T_MGW_NAVIGATION_PATH
+    exporting
+      !ER_ENTITY type ZCL_ZZ_PTR_019_PURCHAS_MPC=>TS_POSUBCONTRACTINGCOMPONENT
+      !ES_RESPONSE_CONTEXT type /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+    raising
+      /IWBEP/CX_MGW_BUSI_EXCEPTION
+      /IWBEP/CX_MGW_TECH_EXCEPTION .
+
+  methods PURCHASEORDERHEA_GET_ENTITYSET
+    redefinition .
+  methods PURCHASEORDERI01_GET_ENTITYSET
+    redefinition .
+  methods PURCHASINGGROUPS_GET_ENTITY
+    redefinition .
+  methods SHIPTOPARTNERS_GET_ENTITY
+    redefinition .
+  methods SUPPLIERS_GET_ENTITY
+    redefinition .
+private section.
+ENDCLASS.
+
+
+
+CLASS ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT IMPLEMENTATION.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING(optional)
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING(optional)
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING(optional)
+* | [--->] IT_FILTER_SELECT_OPTIONS       TYPE        /IWBEP/T_MGW_SELECT_OPTION(optional)
+* | [--->] IT_ORDER                       TYPE        /IWBEP/T_MGW_SORTING_ORDER(optional)
+* | [--->] IS_PAGING                      TYPE        /IWBEP/S_MGW_PAGING(optional)
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH(optional)
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR(optional)
+* | [--->] IV_FILTER_STRING               TYPE        STRING(optional)
+* | [--->] IV_SEARCH_STRING               TYPE        STRING(optional)
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITYSET(optional)
+* | [<---] ER_ENTITYSET                   TYPE REF TO DATA
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  method /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET.
+*&---------------------------------------------------------------------*
+*& Redefined Method         /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar,Jyothi Mariya
+* Creation Date:  07/04/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+
+
+        DATA(lv_entityname) = io_tech_request_context->get_entity_set_name( ).
+
+    CASE lv_entityname.
+
+      WHEN 'PurchaseOrderItemInvoicingPlanNodeSet'.
+        INVOICING_GET_ENTITYSET(
+          EXPORTING
+            iv_entity_name               =   iv_entity_name
+            iv_entity_set_name           =   iv_entity_set_name
+            iv_source_name               =   iv_source_name
+            it_filter_select_options     =   it_filter_select_options
+            is_paging                    =   is_paging
+            it_key_tab                   =   it_key_tab
+            it_navigation_path           =   it_navigation_path
+            it_order                     =   it_order
+            iv_filter_string             =   iv_filter_string
+            iv_search_string             =   iv_search_string
+            io_tech_request_context      =   io_tech_request_context
+          IMPORTING
+            et_entityset                 = DATA(lt_entityset)
+            es_response_context          = es_response_context
+        ).
+*          CATCH /iwbep/cx_mgw_busi_exception.    "
+*          CATCH /iwbep/cx_mgw_tech_exception.    " /
+
+        IF lt_entityset IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = lt_entityset CHANGING cr_data = er_entityset ) .
+        ENDIF.
+      WHEN 'PurchaseOrderHeaderNodeSet'.
+        PO_HEADERNODE_GET_ENTITYSET(
+          EXPORTING
+            iv_entity_name               =   iv_entity_name
+            iv_entity_set_name           =   iv_entity_set_name
+            iv_source_name               =   iv_source_name
+            it_filter_select_options     =   it_filter_select_options
+            is_paging                    =   is_paging
+            it_key_tab                   =   it_key_tab
+            it_navigation_path           =   it_navigation_path
+            it_order                     =   it_order
+            iv_filter_string             =   iv_filter_string
+            iv_search_string             =   iv_search_string
+            io_tech_request_context      =   io_tech_request_context
+          IMPORTING
+            et_entityset                 = DATA(lt_entityset1)
+            es_response_context          = es_response_context
+        ).
+*          CATCH /iwbep/cx_mgw_busi_exception.    "
+*          CATCH /iwbep/cx_mgw_tech_exception.    " /
+
+        IF lt_entityset1 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = lt_entityset1 CHANGING cr_data = er_entityset ) .
+        ENDIF.
+
+        WHEN 'PurchaseOrderFooterTextSet'.
+        PO_FOOTERTEXT_GET_ENTITYSET(
+          EXPORTING
+            iv_entity_name               =   iv_entity_name
+            iv_entity_set_name           =   iv_entity_set_name
+            iv_source_name               =   iv_source_name
+            it_filter_select_options     =   it_filter_select_options
+            is_paging                    =   is_paging
+            it_key_tab                   =   it_key_tab
+            it_navigation_path           =   it_navigation_path
+            it_order                     =   it_order
+            iv_filter_string             =   iv_filter_string
+            iv_search_string             =   iv_search_string
+            io_tech_request_context      =   io_tech_request_context
+          IMPORTING
+            et_entityset                 = DATA(lt_entityset2)
+            es_response_context          = es_response_context
+        ).
+*          CATCH /iwbep/cx_mgw_busi_exception.    "
+*          CATCH /iwbep/cx_mgw_tech_exception.    " /
+
+        IF lt_entityset2 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = lt_entityset2 CHANGING cr_data = er_entityset ) .
+        ENDIF.
+
+*        WHEN 'POSubcontractingComponentCustomNodeSet'.
+*        POSUBCOMP_GET_ENTITYSET(
+*          EXPORTING
+*            iv_entity_name               =   iv_entity_name
+*            iv_entity_set_name           =   iv_entity_set_name
+*            iv_source_name               =   iv_source_name
+*            it_filter_select_options     =   it_filter_select_options
+*            is_paging                    =   is_paging
+*            it_key_tab                   =   it_key_tab
+*            it_navigation_path           =   it_navigation_path
+*            it_order                     =   it_order
+*            iv_filter_string             =   iv_filter_string
+*            iv_search_string             =   iv_search_string
+*            io_tech_request_context      =   io_tech_request_context
+*          IMPORTING
+*            et_entityset                 = DATA(lt_entityset3)
+*            es_response_context          = es_response_context
+*        ).
+**          CATCH /iwbep/cx_mgw_busi_exception.    "
+**          CATCH /iwbep/cx_mgw_tech_exception.    " /
+*
+*        IF lt_entityset2 IS NOT INITIAL.
+*          copy_data_to_ref( EXPORTING is_data = lt_entityset3 CHANGING cr_data = er_entityset ) .
+*        ENDIF.
+
+
+
+
+"PO_FOOTERTEXT_GET_ENTITYSET
+      WHEN OTHERS.
+        TRY.
+
+            CALL METHOD super->/iwbep/if_mgw_appl_srv_runtime~get_entityset
+              EXPORTING
+                iv_entity_name           = iv_entity_name
+                iv_entity_set_name       = iv_entity_set_name
+                iv_source_name           = iv_source_name
+                it_filter_select_options = it_filter_select_options
+                it_order                 = it_order
+                is_paging                = is_paging
+                it_navigation_path       = it_navigation_path
+                it_key_tab               = it_key_tab
+                iv_filter_string         = iv_filter_string
+                iv_search_string         = iv_search_string
+                io_tech_request_context  = io_tech_request_context
+              IMPORTING
+                er_entityset             = er_entityset
+                es_response_context      = es_response_context.
+
+          CATCH /iwbep/cx_mgw_busi_exception .
+          CATCH /iwbep/cx_mgw_tech_exception .
+
+        ENDTRY.
+
+    ENDCASE.
+
+
+
+
+
+
+
+
+
+
+
+**TRY.
+*CALL METHOD SUPER->/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITYSET
+**  EXPORTING
+**    iv_entity_name           =
+**    iv_entity_set_name       =
+**    iv_source_name           =
+**    it_filter_select_options =
+**    it_order                 =
+**    is_paging                =
+**    it_navigation_path       =
+**    it_key_tab               =
+**    iv_filter_string         =
+**    iv_search_string         =
+**    io_tech_request_context  =
+**  IMPORTING
+**    er_entityset             =
+**    es_response_context      =
+*    .
+**  CATCH /iwbep/cx_mgw_busi_exception.
+**  CATCH /iwbep/cx_mgw_tech_exception.
+**ENDTRY.
+  endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->INVOICING_GET_ENTITYSET
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_FILTER_SELECT_OPTIONS       TYPE        /IWBEP/T_MGW_SELECT_OPTION
+* | [--->] IS_PAGING                      TYPE        /IWBEP/S_MGW_PAGING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [--->] IT_ORDER                       TYPE        /IWBEP/T_MGW_SORTING_ORDER
+* | [--->] IV_FILTER_STRING               TYPE        STRING
+* | [--->] IV_SEARCH_STRING               TYPE        STRING
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITYSET(optional)
+* | [<---] ET_ENTITYSET                   TYPE        ZCL_ZZ_PTR_019_PURCHAS_MPC=>TT_PURCHASEORDERITEMINVOICINGP
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD invoicing_get_entityset.
+*&---------------------------------------------------------------------*
+*& Method         INVOICING_GET_ENTITYSET
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  07/04/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+
+    DATA ls_po_key    TYPE /iwbep/s_mgw_name_value_pair.
+    DATA ls_item_key  TYPE /iwbep/s_mgw_name_value_pair.
+    DATA lv_ebeln     TYPE ebeln.
+    DATA lv_ebelp     TYPE ebelp.
+    DATA lv_flag     TYPE char1.
+
+    CLEAR :  es_response_context,ls_item_key,ls_item_key ,lv_ebeln,lv_ebelp,lv_flag.
+    REFRESH et_entityset.
+
+* Sanity Check
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+    IF sy-subrc = 0.
+      lv_ebeln = ls_po_key-value.
+
+* Item
+      READ TABLE it_key_tab
+           WITH KEY name = 'PurchaseOrderItem'
+           INTO ls_item_key.
+      IF sy-subrc = 0.
+        lv_ebelp = ls_item_key-value.
+
+        SELECT SINGLE ebeln,ebelp,fplnr
+          FROM ekpo
+          INTO @DATA(ls_ebeln)
+          WHERE ebeln = @lv_ebeln
+          and ebelp = @lv_ebelp.
+
+        IF sy-subrc EQ 0.
+          SELECT SINGLE fplnr,bedat, endat, horiz
+            FROM fpla
+            INTO @DATA(ls_fpla_dt)
+            WHERE fplnr EQ @ls_ebeln-fplnr.
+          IF sy-subrc EQ 0.
+            IF ls_fpla_dt-bedat IS NOT INITIAL
+              AND ls_fpla_dt-endat IS INITIAL
+              AND ls_fpla_dt-horiz IS INITIAL .
+              lv_flag = abap_true."for Partial Invoice Plan
+            ELSEIF ls_fpla_dt-bedat IS NOT INITIAL
+              AND ls_fpla_dt-endat IS NOT INITIAL
+              AND ls_fpla_dt-horiz IS NOT INITIAL .
+              lv_flag = 'P'.  "For Periodic Invoice Plan
+            ELSEIF ( ls_fpla_dt-bedat IS NOT INITIAL
+              OR ls_fpla_dt-endat IS NOT INITIAL )
+              AND ls_fpla_dt-horiz IS NOT INITIAL .
+              lv_flag = 'P'.  "For Periodic Invoice Plan
+            ENDIF.
+            SELECT fplnr,fpltr,nfdat,fkdat,afdat,fakwr,waers,tetxt,fproz
+              FROM fplt
+              INTO TABLE @DATA(lt_inv_fplt)
+              WHERE fplnr EQ @ls_ebeln-fplnr.
+            IF sy-subrc  EQ 0.
+              SELECT *
+            FROM tvtbt
+            INTO TABLE @DATA(lt_tvtbt)
+            WHERE spras EQ @sy-langu .
+            ENDIF.
+            IF sy-subrc EQ 0.
+              LOOP AT lt_inv_fplt ASSIGNING FIELD-SYMBOL(<fs_inv_fplt>).
+                APPEND INITIAL LINE TO et_entityset ASSIGNING FIELD-SYMBOL(<ls_entityset>).
+                READ TABLE lt_tvtbt ASSIGNING FIELD-SYMBOL(<fs_tvtbt>) WITH KEY tetbe = <fs_inv_fplt>-tetxt.
+                IF sy-subrc EQ 0.
+                  <ls_entityset>-tebez_fp = <fs_tvtbt>-tebez.
+                ENDIF.
+                <ls_entityset>-ebeln = lv_ebeln.
+                <ls_entityset>-ebelp = CONV #( ls_item_key-value ).
+                <ls_entityset>-iplnr = ls_ebeln-fplnr.
+                <ls_entityset>-char1 = lv_flag.
+                MOVE  <fs_inv_fplt>-nfdat TO <ls_entityset>-nfdat .
+                MOVE <fs_inv_fplt>-fkdat TO <ls_entityset>-bfdat.
+                MOVE <fs_inv_fplt>-afdat TO <ls_entityset>-fkdat.
+                <ls_entityset>-fakwr = <fs_inv_fplt>-fakwr.
+                <ls_entityset>-tetxt_fp = <fs_inv_fplt>-tetxt.
+                <ls_entityset>-fproz = <fs_inv_fplt>-fproz.
+                <ls_entityset>-waers = <fs_inv_fplt>-waers.
+              ENDLOOP.
+            ENDIF.
+          ENDIF.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->PO_HEADERNODE_GET_ENTITYSET
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_FILTER_SELECT_OPTIONS       TYPE        /IWBEP/T_MGW_SELECT_OPTION
+* | [--->] IS_PAGING                      TYPE        /IWBEP/S_MGW_PAGING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [--->] IT_ORDER                       TYPE        /IWBEP/T_MGW_SORTING_ORDER
+* | [--->] IV_FILTER_STRING               TYPE        STRING
+* | [--->] IV_SEARCH_STRING               TYPE        STRING
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITYSET(optional)
+* | [<---] ET_ENTITYSET                   TYPE        ZCL_ZZ_PTR_019_PURCHAS_MPC=>TT_PURCHASEORDERHEADERNODE
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD po_headernode_get_entityset.
+*&---------------------------------------------------------------------*
+*& Redefined Method         PURCHASEORDERHEA_GET_ENTITYSET
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  07/04/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+    DATA: ls_po_key      TYPE /iwbep/s_mgw_name_value_pair,
+          lv_ebeln       TYPE ebeln,
+          lv_branch      TYPE j_1bbranc_,
+          lv_CGC_NO      TYPE j_1bwfield-cgc_number,
+          ls_thead       TYPE thead,
+          lt_text        TYPE zcl_zz_ptr_019_purchas_mpc=>tt_purchaseorderheadernode,
+          lt_thead       TYPE TABLE OF thead,
+          it_thead       LIKE lt_thead,
+          lt_text_line   TYPE STANDARD TABLE OF tline,
+          ls_text        TYPE zcl_zz_ptr_019_purchas_mpc=>ts_purchaseorderheadernode,
+          lt_text_stream TYPE TABLE OF string,
+          ls_string      LIKE LINE OF lt_text_stream,
+          lv_count       TYPE int4 VALUE 0,
+          lv_nam        TYPE thead-tdname,
+          lt_lines        TYPE TABLE OF tline.
+    CONSTANTS: lv_bzl_cc TYPE bukrs VALUE '1410',
+               lv_name   TYPE rvari_vnam VALUE 'ZPTR_19_PO_FOOTERTEXT',
+               lv_type   TYPE rsscr_kind VALUE 'S',
+               lv_high   TYPE rvari_val_255 VALUE 'ZPTR_19_FOOTER2_EU',
+               lc_ekko   TYPE thead-tdobject VALUE 'EKKO',
+               lc_F95    TYPE thead-tdid VALUE 'F95'.
+
+    CLEAR   es_response_context.
+    REFRESH et_entityset.
+
+* Sanity Check
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+    IF sy-subrc = 0.
+      lv_ebeln = ls_po_key-value.
+    ENDIF.
+    SELECT SINGLE ebeln,bukrs,revno,inco1
+      FROM ekko
+      INTO @DATA(ls_ekko)
+      WHERE ebeln EQ @lv_ebeln.
+    IF sy-subrc EQ 0.
+
+      SHIFT ls_ekko-revno LEFT BY 5 PLACES.
+      ls_text-revno = ls_ekko-revno.
+
+
+      SELECT SINGLE *
+      FROM tvarvc
+      INTO @DATA(ls_tvarvc)
+      WHERE name = @lv_name
+      AND   type = @lv_type
+      AND low = @ls_ekko-bukrs.
+      IF sy-subrc EQ 0 AND ls_tvarvc-high EQ lv_high.
+        SELECT SINGLE bukrs,stceg
+          FROM t001
+          INTO @DATA(ls_vat)
+          WHERE bukrs = @ls_ekko-bukrs.
+        IF sy-subrc EQ 0.
+          ls_text-stceg      = ls_vat-stceg.
+        ENDIF.
+      ENDIF.
+      IF ls_ekko-bukrs EQ lv_bzl_cc.
+        CALL FUNCTION 'J_1BREAD_CGC_COMPANY'
+          EXPORTING
+            bukrs      = ls_ekko-bukrs              " Company
+          IMPORTING
+*           cgc_company =
+            branch     = lv_branch
+            cgc_number = lv_CGC_NO.
+        IF sy-subrc EQ 0.
+          ls_text-j_1bcgc    = lv_cgc_no.
+        ENDIF.
+        SELECT bukrs,branch,bupla_type,state_insc
+          FROM j_1bbranch
+          UP TO 1 ROWS
+          INTO TABLE @DATA(lt_tax_no)
+          WHERE bukrs = @ls_ekko-bukrs.
+        IF Lt_tax_no IS NOT INITIAL.
+          DATA(ls_tax_no)           = lt_tax_no[ 1 ].
+          ls_text-j_1bstains = ls_tax_no-state_insc.
+        ENDIF.
+      ENDIF.
+      SELECT SINGLE spras,inco1,bezei
+          FROM tinct
+          INTO @DATA(ls_tinct)
+          WHERE spras EQ @sy-langu
+          AND inco1 EQ @ls_ekko-inco1.
+      IF sy-subrc EQ 0.
+        ls_text-bezei = ls_tinct-bezei.
+      ENDIF.
+      lv_nam = lv_ebeln.
+      CALL FUNCTION 'READ_TEXT'
+        EXPORTING
+*         client                  = SY-MANDT         " Client
+          id                      = lc_F95                " Text ID of text to be read
+          language                = sy-langu                " Language of text to be read
+          name                    = lv_nam                " Name of text to be read
+          object                  = lc_ekko               " Object of text to be read
+        TABLES
+          lines                   = lt_lines               " Lines of text read
+        EXCEPTIONS
+          id                      = 1                " Text ID invalid
+          language                = 2                " Invalid language
+          name                    = 3                " Invalid text name
+          not_found               = 4                " Text not found
+          object                  = 5                " Invalid text object
+          reference_check         = 6                " Reference chain interrupted
+          wrong_access_to_archive = 7                " Archive handle invalid for access
+          OTHERS                  = 8.
+      IF sy-subrc <> 0.
+*           MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*             WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+      ELSE.
+        LOOP AT lt_lines ASSIGNING FIELD-SYMBOL(<fs_lines>).
+          IF ls_text-char60 IS INITIAL.
+            ls_text-char60 = <fs_lines>-tdline.
+          ELSE.
+            ls_text-char60 = ls_text-char60 && | | && <fs_lines>-tdline.
+          ENDIF.
+
+        ENDLOOP.
+      ENDIF.
+    ENDIF.
+    APPEND ls_text TO lt_text.
+    LOOP AT lt_text ASSIGNING FIELD-SYMBOL(<ls_text>).
+      APPEND INITIAL LINE TO et_entityset ASSIGNING FIELD-SYMBOL(<ls_entityset1>).
+      MOVE-CORRESPONDING <ls_text> TO <ls_entityset1>.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->PURCHASEORDERHEA_GET_ENTITYSET
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_FILTER_SELECT_OPTIONS       TYPE        /IWBEP/T_MGW_SELECT_OPTION
+* | [--->] IS_PAGING                      TYPE        /IWBEP/S_MGW_PAGING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [--->] IT_ORDER                       TYPE        /IWBEP/T_MGW_SORTING_ORDER
+* | [--->] IV_FILTER_STRING               TYPE        STRING
+* | [--->] IV_SEARCH_STRING               TYPE        STRING
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITYSET(optional)
+* | [<---] ET_ENTITYSET                   TYPE        CL_FDP_EF_PURCHASE_ORD_MPC=>TT_PURCHASEORDERHEADERTEXTS
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD purchaseorderhea_get_entityset.
+*&---------------------------------------------------------------------*
+*& Redefined Method         PURCHASEORDERHEA_GET_ENTITYSET
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Jyothi Mariya
+* Creation Date:  07/04/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+* Custom
+    DATA ls_po_key    TYPE /iwbep/s_mgw_name_value_pair.
+    DATA ls_thead     TYPE thead.
+    DATA lt_text      TYPE cl_fdp_ef_purchase_ord_mpc=>tt_purchaseorderheadertexts.
+    DATA lv_ebeln     TYPE ebeln.
+
+    DATA lt_thead       TYPE TABLE OF thead.
+    DATA it_thead       LIKE lt_thead.
+    DATA lt_text_line   TYPE STANDARD TABLE OF tline.
+    DATA ls_text        TYPE cl_fdp_ef_purchase_ord_mpc=>ts_purchaseorderheadertexts.
+    DATA lt_text_stream TYPE TABLE OF string.
+    DATA ls_string      LIKE LINE OF lt_text_stream.
+    DATA lv_count       TYPE int4 VALUE 0.
+    DATA:lt_tdid        TYPE MDG_BS_MAT_T_RANGE_TDID.
+
+    CLEAR   es_response_context.
+    REFRESH et_entityset.
+
+* Sanity Check
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+    IF sy-subrc = 0.
+      lv_ebeln = ls_po_key-value.
+    ENDIF.
+
+    IF ls_po_key-value IS NOT INITIAL.
+*Retrieve Purchasing Document Type and Category
+      SELECT SINGLE ebeln, lifnr, bstyp, bsart, spras, ekorg
+        FROM cds_po_head_p
+        INTO @DATA(ls_po_header)
+        WHERE ebeln = @ls_po_key-value.
+
+      ls_thead-tdobject = 'EKKO'.
+      ls_thead-tdspras = ls_po_header-spras.
+      ls_thead-tdname  = lv_ebeln.
+      ls_thead-tdid = '*'.
+      APPEND ls_thead TO lt_thead.
+      CLEAR ls_thead.
+
+      ls_thead-tdobject = 'LFM1'.
+      ls_thead-tdspras = ls_po_header-spras.
+      ls_thead-tdname  = ls_po_header-lifnr && ls_po_header-ekorg.
+      ls_thead-tdid = '*'.
+      APPEND ls_thead TO lt_thead.
+      CLEAR ls_thead.
+
+      SELECT from tvarvc
+        FIELDS name,type,low
+        WHERE name = 'ZPTR_19_PO_HEADERTEXTID' and type = 'S'
+        INTO TABLE @data(lt_id).
+        IF SY-SUBRC EQ 0.
+          LOOP AT lt_id ASSIGNING FIELD-SYMBOL(<FS_ID>).
+            APPEND INITIAL LINE TO lt_tdid ASSIGNING FIELD-SYMBOL(<FS_TDID>).
+            <FS_TDID>-low = <FS_ID>-low.
+          ENDLOOP.
+
+        ENDIF.
+
+
+
+
+      LOOP AT lt_thead INTO ls_thead.
+*********************************************
+        CALL FUNCTION 'SELECT_TEXT'
+          EXPORTING
+            object                  = ls_thead-tdobject
+            name                    = ls_thead-tdname
+            id                      = ls_thead-tdid
+            language                = ls_thead-tdspras
+          TABLES
+            selections              = it_thead
+          EXCEPTIONS
+            wrong_access_to_archive = 1
+            OTHERS                  = 2.
+        IF sy-subrc <> 0.
+          RETURN. "<<<
+        ENDIF.
+
+
+
+        LOOP AT it_thead REFERENCE INTO DATA(lr_thead).
+* Initialize
+          REFRESH lt_text_line.
+* Get Text Lines
+          READ TABLE lt_tdid WITH KEY low = lr_thead->tdid ASSIGNING FIELD-SYMBOL(<ID>) .
+*          IF lr_thead->tdid NE 'F02'.
+          IF SY-SUBRC EQ 0.
+            CALL FUNCTION 'READ_TEXT'
+              EXPORTING
+                name                    = lr_thead->tdname
+                object                  = lr_thead->tdobject
+                id                      = lr_thead->tdid
+                language                = lr_thead->tdspras   "iv_thead-tdspras
+              TABLES
+                lines                   = lt_text_line
+              EXCEPTIONS
+                id                      = 1
+                language                = 2
+                name                    = 3
+                not_found               = 4
+                object                  = 5
+                reference_check         = 6
+                wrong_access_to_archive = 7
+                OTHERS                  = 8.
+            IF sy-subrc <> 0.
+              RETURN. "<<<
+            ENDIF.
+
+            CLEAR ls_text.
+            ls_text-ebeln            = ls_thead-tdname.   "lv_ebeln.
+            ls_text-language         = lr_thead->tdspras.
+            ls_text-text_id          = lr_thead->tdid.
+
+            REFRESH lt_text_stream.
+
+* Convert to text stream format in table
+            CALL FUNCTION 'CONVERT_ITF_TO_STREAM_TEXT'
+              EXPORTING
+                language     = lr_thead->tdspras
+                lf           = abap_true
+              IMPORTING
+                stream_lines = lt_text_stream
+              TABLES
+                itf_text     = lt_text_line.
+
+* Text Content - iterate through each line of text
+            CLEAR lv_count.
+            CLEAR ls_text-text_content.
+            LOOP AT lt_text_stream INTO ls_string.
+              IF sy-tabix = 1.
+                ls_text-text_content = ls_string.
+              ELSE.
+                CONCATENATE ls_text-text_content ls_string
+                INTO ls_text-text_content
+                SEPARATED BY cl_abap_char_utilities=>newline.
+              ENDIF.
+              lv_count = sy-tabix.
+            ENDLOOP.
+
+* Set entity result set (if there are any lines of text...)
+            IF ( lv_count > 0 ).
+              INSERT ls_text INTO TABLE lt_text.
+            ENDIF.
+          ENDIF.
+        ENDLOOP.
+        CLEAR: ls_text, ls_thead.
+      ENDLOOP.
+
+*********************************************
+*      CALL METHOD cl_fdp_ef_pur_ord_form_utility=>get_header_texts
+*        EXPORTING
+*          iv_ebeln = lv_ebeln
+*          iv_bstyp = ls_po_header-bstyp
+*          iv_bsart = ls_po_header-bsart
+*          iv_thead = ls_thead
+*        IMPORTING
+*          et_text  = lt_text.
+
+      LOOP AT lt_text ASSIGNING FIELD-SYMBOL(<ls_text>).
+        APPEND INITIAL LINE TO et_entityset ASSIGNING FIELD-SYMBOL(<ls_entityset>).
+        MOVE-CORRESPONDING <ls_text> TO <ls_entityset>.
+      ENDLOOP.
+
+    ENDIF.
+
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Public Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING(optional)
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING(optional)
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING(optional)
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR(optional)
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH(optional)
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [<---] ER_ENTITY                      TYPE REF TO DATA
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  method /IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITY.
+   DATA(lv_entityname) = io_tech_request_context->get_entity_type_name( ).
+    CASE lv_entityname.
+      WHEN 'ShipToPartyItemNode'.
+        TRY.
+            SHIPTO_ITEMNODES_GET_ENTITY(
+              EXPORTING
+                iv_entity_name          = iv_entity_name
+                iv_entity_set_name      = iv_entity_set_name
+                iv_source_name          = iv_source_name
+                it_key_tab              = it_key_tab
+*               io_request_object       = io_request_object
+                io_tech_request_context = io_tech_request_context
+                it_navigation_path      = it_navigation_path
+              IMPORTING
+                er_entity               = DATA(ls_entity1)
+                es_response_context     = es_response_context
+                ).
+          CATCH /iwbep/cx_mgw_busi_exception.
+          CATCH /iwbep/cx_mgw_tech_exception.
+        ENDTRY.
+
+        IF ls_entity1 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = ls_entity1 CHANGING cr_data = er_entity ) .
+        ENDIF.
+
+        WHEN 'POSubcontractingComponent'.
+        TRY.
+            SUBCONTRACTING_COMP_GET_ENTITY(
+              EXPORTING
+                iv_entity_name          = iv_entity_name
+                iv_entity_set_name      = iv_entity_set_name
+                iv_source_name          = iv_source_name
+                it_key_tab              = it_key_tab
+*               io_request_object       = io_request_object
+                io_tech_request_context = io_tech_request_context
+                it_navigation_path      = it_navigation_path
+              IMPORTING
+                er_entity               = DATA(ls_entity2)
+                es_response_context     = es_response_context
+                ).
+          CATCH /iwbep/cx_mgw_busi_exception.
+          CATCH /iwbep/cx_mgw_tech_exception.
+        ENDTRY.
+
+        IF ls_entity2 IS NOT INITIAL.
+          copy_data_to_ref( EXPORTING is_data = ls_entity2 CHANGING cr_data = er_entity ) .
+        ENDIF.
+
+
+
+      WHEN OTHERS.
+
+        TRY.
+            CALL METHOD super->/iwbep/if_mgw_appl_srv_runtime~get_entity
+              EXPORTING
+                iv_entity_name          = iv_entity_name
+                iv_entity_set_name      = iv_entity_set_name
+                iv_source_name          = iv_source_name
+                it_key_tab              = it_key_tab
+                it_navigation_path      = it_navigation_path
+                io_tech_request_context = io_tech_request_context
+              IMPORTING
+                er_entity               = er_entity
+                es_response_context     = es_response_context.
+          CATCH /iwbep/cx_mgw_busi_exception.
+          CATCH /iwbep/cx_mgw_tech_exception.
+        ENDTRY.
+    ENDCASE.
+
+
+
+**TRY.
+*CALL METHOD SUPER->/IWBEP/IF_MGW_APPL_SRV_RUNTIME~GET_ENTITY
+**  EXPORTING
+**    iv_entity_name          =
+**    iv_entity_set_name      =
+**    iv_source_name          =
+**    it_key_tab              =
+**    it_navigation_path      =
+**    io_tech_request_context =
+**  IMPORTING
+**    er_entity               =
+**    es_response_context     =
+*    .
+**  CATCH /iwbep/cx_mgw_busi_exception.
+**  CATCH /iwbep/cx_mgw_tech_exception.
+**ENDTRY.
+  endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->PO_FOOTERTEXT_GET_ENTITYSET
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_FILTER_SELECT_OPTIONS       TYPE        /IWBEP/T_MGW_SELECT_OPTION
+* | [--->] IS_PAGING                      TYPE        /IWBEP/S_MGW_PAGING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [--->] IT_ORDER                       TYPE        /IWBEP/T_MGW_SORTING_ORDER
+* | [--->] IV_FILTER_STRING               TYPE        STRING
+* | [--->] IV_SEARCH_STRING               TYPE        STRING
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITYSET(optional)
+* | [<---] ET_ENTITYSET                   TYPE        ZCL_ZZ_PTR_019_PURCHAS_MPC=>TT_PURCHASEORDERFOOTERTEXT
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD po_footertext_get_entityset.
+*&---------------------------------------------------------------------*
+*& Redefined Method         PURCHASEORDERHEA_GET_ENTITYSET
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  07/04/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+    DATA: ls_po_key      TYPE /iwbep/s_mgw_name_value_pair,
+          lv_ebeln       TYPE ebeln,
+          ls_thead       TYPE thead,
+          lt_text        TYPE zcl_zz_ptr_019_purchas_mpc=>tt_purchaseorderfootertext,
+          lt_thead       TYPE TABLE OF thead,
+          it_thead       LIKE lt_thead,
+          lt_text_line   TYPE STANDARD TABLE OF tline,
+          ls_text        TYPE zcl_zz_ptr_019_purchas_mpc=>ts_purchaseorderfootertext,
+          lt_text_stream TYPE TABLE OF string,
+          ls_string      LIKE LINE OF lt_text_stream,
+          lv_count       TYPE int4 VALUE 0,
+          lt_lines       TYPE TABLE OF tline.
+    CONSTANTS: lv_ftr1    TYPE thead-tdname VALUE 'ZPTR_19_FOOTER1',
+               lv_ftr_obj TYPE thead-tdobject VALUE 'TEXT',
+               lv_ftr_id  TYPE thead-tdid VALUE 'ST',
+               lv_name    TYPE rvari_vnam VALUE 'ZPTR_19_PO_FOOTERTEXT',
+               lv_type    TYPE rsscr_kind VALUE 'S'.
+
+    CLEAR   es_response_context.
+    REFRESH et_entityset.
+
+* Sanity Check
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+    IF sy-subrc = 0.
+      lv_ebeln = ls_po_key-value.
+    ENDIF.
+    SELECT SINGLE ebeln,bukrs,spras
+      FROM ekko
+      INTO @DATA(ls_ekko)
+      WHERE ebeln EQ @lv_ebeln.
+    IF sy-subrc EQ 0.
+    ENDIF.
+
+
+    CLEAR:lt_lines ,ls_thead,lt_thead.
+    ls_thead-tdname = lv_ftr1.
+    ls_thead-tdobject = lv_ftr_obj.
+    ls_thead-tdid = lv_ftr_id.
+    ls_thead-tdspras = ls_ekko-spras.
+    APPEND ls_thead TO lt_thead.
+
+    SELECT SINGLE *
+      FROM tvarvc
+      INTO @DATA(ls_tvarvc)
+      WHERE name = @lv_name
+      AND   type = @lv_type
+      AND low = @ls_ekko-bukrs.
+    IF sy-subrc EQ 0.
+      CLEAR ls_thead-tdname.
+      ls_thead-tdname = ls_tvarvc-high.
+      APPEND ls_thead TO lt_thead.
+    ENDIF.
+    LOOP AT lt_thead INTO ls_thead.
+*********************************************
+      CALL FUNCTION 'SELECT_TEXT'
+        EXPORTING
+          object                  = ls_thead-tdobject
+          name                    = ls_thead-tdname
+          id                      = ls_thead-tdid
+          language                = ls_thead-tdspras
+        TABLES
+          selections              = it_thead
+        EXCEPTIONS
+          wrong_access_to_archive = 1
+          OTHERS                  = 2.
+      IF sy-subrc <> 0.
+        RETURN. "<<<
+      ENDIF.
+      LOOP AT it_thead REFERENCE INTO DATA(lr_thead).
+* Initialize
+        REFRESH lt_text_line.
+* Get Text Lines
+        CALL FUNCTION 'READ_TEXT'
+          EXPORTING
+            name                    = lr_thead->tdname
+            object                  = lr_thead->tdobject
+            id                      = lr_thead->tdid
+            language                = lr_thead->tdspras   "iv_thead-tdspras
+          TABLES
+            lines                   = lt_text_line
+          EXCEPTIONS
+            id                      = 1
+            language                = 2
+            name                    = 3
+            not_found               = 4
+            object                  = 5
+            reference_check         = 6
+            wrong_access_to_archive = 7
+            OTHERS                  = 8.
+        IF sy-subrc <> 0.
+          RETURN. "<<<
+        ENDIF.
+*            CLEAR ls_text.
+        ls_text-ebeln            = lv_ebeln.
+        ls_text-language         = lr_thead->tdspras.
+        ls_text-text_id          = lr_thead->tdid.
+        REFRESH lt_text_stream.
+* Convert to text stream format in table
+        CALL FUNCTION 'CONVERT_ITF_TO_STREAM_TEXT'
+          EXPORTING
+            language     = lr_thead->tdspras
+            lf           = abap_true
+          IMPORTING
+            stream_lines = lt_text_stream
+          TABLES
+            itf_text     = lt_text_line.
+* Text Content - iterate through each line of text
+        CLEAR lv_count.
+        CLEAR ls_text-text_content.
+        LOOP AT lt_text_stream INTO ls_string.
+          IF sy-tabix = 1.
+            ls_text-text_content = ls_string.
+          ELSE.
+            CONCATENATE ls_text-text_content ls_string
+            INTO ls_text-text_content
+            SEPARATED BY cl_abap_char_utilities=>newline.
+          ENDIF.
+          lv_count = sy-tabix.
+        ENDLOOP.
+* Set entity result set (if there are any lines of text...)
+        IF ( lv_count > 0 ).
+          INSERT ls_text INTO TABLE lt_text.
+        ENDIF.
+      ENDLOOP.
+      CLEAR: ls_text, ls_thead.
+    ENDLOOP.
+    LOOP AT lt_text ASSIGNING FIELD-SYMBOL(<ls_text>).
+      APPEND INITIAL LINE TO et_entityset ASSIGNING FIELD-SYMBOL(<ls_entityset1>).
+      MOVE-CORRESPONDING <ls_text> TO <ls_entityset1>.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->PURCHASEORDERI01_GET_ENTITYSET
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_FILTER_SELECT_OPTIONS       TYPE        /IWBEP/T_MGW_SELECT_OPTION
+* | [--->] IS_PAGING                      TYPE        /IWBEP/S_MGW_PAGING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [--->] IT_ORDER                       TYPE        /IWBEP/T_MGW_SORTING_ORDER
+* | [--->] IV_FILTER_STRING               TYPE        STRING
+* | [--->] IV_SEARCH_STRING               TYPE        STRING
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITYSET(optional)
+* | [<---] ET_ENTITYSET                   TYPE        CL_FDP_EF_PURCHASE_ORD_MPC=>TT_PURCHASEORDERITEMTEXTS
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_CONTEXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD purchaseorderi01_get_entityset.
+*&---------------------------------------------------------------------*
+*& Redefined Method         PURCHASEORDERI01_GET_ENTITYSET
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  08/30/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+
+
+    DATA ls_po_key    TYPE /iwbep/s_mgw_name_value_pair.
+    DATA ls_item_key  TYPE /iwbep/s_mgw_name_value_pair.
+    DATA: lv_ebeln TYPE ebeln,
+          lv_text  TYPE string.
+    DATA ls_thead     TYPE thead.
+    DATA lt_text      TYPE zcl_zz_ptr_019_purchas_mpc=>tt_purchaseorderitemtexts.
+    DATA lv_ebelp     TYPE ebelp.
+    DATA lt_thead       TYPE TABLE OF thead.
+    DATA it_thead       LIKE lt_thead.
+    DATA lt_text_line   TYPE STANDARD TABLE OF tline.
+    DATA ls_text        TYPE zcl_zz_ptr_019_purchas_mpc=>ts_purchaseorderitemtexts.
+    DATA lt_text_stream TYPE TABLE OF string.
+    DATA ls_string      LIKE LINE OF lt_text_stream.
+    DATA lv_count       TYPE int4 VALUE 0.
+    DATA lv_entity      LIKE LINE OF et_entityset.
+    DATA lv_TDNAME      TYPE tdobname.
+    CONSTANTS: lc_tdobject TYPE tdobject VALUE 'EKPO',
+               lc_txt1     TYPE string VALUE 'and Item',
+               lc_txt2     TYPE string VALUE 'This item is a release order of the Outline Agreement / Contract'.
+
+
+    CLEAR:   es_response_context,lv_text.
+    REFRESH et_entityset.
+* Sanity Check
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+    IF sy-subrc = 0.
+      lv_ebeln = ls_po_key-value.
+    ENDIF.
+
+* Item
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrderItem'
+         INTO ls_item_key.
+    IF sy-subrc = 0.
+      lv_ebelp = ls_item_key-value.
+    ENDIF.
+    IF ls_po_key-value IS NOT INITIAL.
+*Retrieve Purchasing Document Type and Category
+      SELECT SINGLE bstyp, bsart, spras, ekorg
+        FROM cds_po_head_p
+        INTO @DATA(ls_po_header)
+        WHERE ebeln = @lv_ebeln.
+
+      SELECT SINGLE ebeln, ebelp, pstyp, werks, matnr, infnr , konnr , ktpnr
+        FROM ekpo
+        INTO @DATA(ls_ekpo)
+        WHERE ebeln = @lv_ebeln
+          AND ebelp = @lv_ebelp.
+
+      IF ls_ekpo-konnr IS NOT INITIAL.
+        SHIFT ls_ekpo-ktpnr LEFT DELETING LEADING '0'.
+        CONCATENATE lc_txt2 ls_ekpo-konnr lc_txt1 ls_ekpo-ktpnr INTO lv_text SEPARATED BY space.
+      ENDIF.
+      CLEAR lv_tdname.
+      lv_TDNAME = lv_ebeln && lv_ebelp.
+      ls_thead-tdobject = lc_tdobject.  "ls_stxl-tdobject.  "'EKPO'.
+      ls_thead-tdspras =  ls_po_header-spras.
+      ls_thead-tdname  =  lv_TDNAME.  "ls_stxl-TDNAME.    "lv_ebeln && lv_ebelp.
+      ls_thead-tdid = '*'.
+
+      CALL FUNCTION 'SELECT_TEXT'
+        EXPORTING
+          object                  = ls_thead-tdobject
+          name                    = ls_thead-tdname
+          id                      = ls_thead-tdid
+          language                = ls_thead-tdspras
+        TABLES
+          selections              = it_thead
+        EXCEPTIONS
+          wrong_access_to_archive = 1
+          OTHERS                  = 2.
+      IF sy-subrc <> 0.
+        RETURN. "<<<
+      ENDIF.
+
+      LOOP AT it_thead REFERENCE INTO DATA(lr_thead).
+* Initialize
+        REFRESH lt_text_line.
+* Get Text Lines
+        CALL FUNCTION 'READ_TEXT'
+          EXPORTING
+            name                    = lr_thead->tdname
+            object                  = lr_thead->tdobject
+            id                      = lr_thead->tdid
+            language                = lr_thead->tdspras   "iv_thead-tdspras
+          TABLES
+            lines                   = lt_text_line
+          EXCEPTIONS
+            id                      = 1
+            language                = 2
+            name                    = 3
+            not_found               = 4
+            object                  = 5
+            reference_check         = 6
+            wrong_access_to_archive = 7
+            OTHERS                  = 8.
+        IF sy-subrc <> 0.
+          RETURN. "<<<
+        ENDIF.
+
+        CLEAR ls_text.
+        ls_text-ebeln = lv_ebeln.
+        ls_text-ebelp = lv_ebelp.
+        ls_text-language         = lr_thead->tdspras.
+        ls_text-text_id          = lr_thead->tdid.
+
+        REFRESH lt_text_stream.
+
+* Convert to text stream format in table
+        CALL FUNCTION 'CONVERT_ITF_TO_STREAM_TEXT'
+          EXPORTING
+            language     = lr_thead->tdspras
+            lf           = abap_true
+          IMPORTING
+            stream_lines = lt_text_stream
+          TABLES
+            itf_text     = lt_text_line.
+
+* Text Content - iterate through each line of text
+        CLEAR lv_count.
+        CLEAR ls_text-text_content.
+        LOOP AT lt_text_stream INTO ls_string.
+          IF sy-tabix = 1.
+            ls_text-text_content = ls_string.
+          ELSE.
+            CONCATENATE ls_text-text_content ls_string
+            INTO ls_text-text_content
+            SEPARATED BY cl_abap_char_utilities=>newline.
+          ENDIF.
+          lv_count = sy-tabix.
+        ENDLOOP.
+
+* Set entity result set (if there are any lines of text...)
+        IF ( lv_count > 0 ).
+          INSERT ls_text INTO TABLE lt_text.
+        ENDIF.
+        CLEAR: ls_text, ls_thead.
+      ENDLOOP.
+
+      LOOP AT lt_text ASSIGNING FIELD-SYMBOL(<ls_text>).
+        APPEND INITIAL LINE TO et_entityset ASSIGNING FIELD-SYMBOL(<ls_entityset>).
+        MOVE-CORRESPONDING <ls_text> TO <ls_entityset>.
+      ENDLOOP.
+      IF lv_text IS NOT INITIAL.
+        APPEND INITIAL LINE TO et_entityset ASSIGNING FIELD-SYMBOL(<ls_entityset1>).
+        <ls_entityset1>-text_content = lv_text.
+      ENDIF.
+
+    ENDIF.
+
+
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->PURCHASINGGROUPS_GET_ENTITY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IO_REQUEST_OBJECT              TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [<---] ER_ENTITY                      TYPE        CL_FDP_EF_PURCHASE_ORD_MPC=>TS_PURCHASINGGROUPNODE
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  method PURCHASINGGROUPS_GET_ENTITY.
+*&---------------------------------------------------------------------*
+*& Redefined Method         PURCHASINGGROUPS_GET_ENTITY
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  08/30/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+    DATA: ls_po_key      TYPE /iwbep/s_mgw_name_value_pair,
+          lv_ebeln       TYPE ebeln.
+    CLEAR :  es_response_context,er_entity.
+
+
+* Sanity Check
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+    IF sy-subrc = 0.
+      lv_ebeln = ls_po_key-value.
+    ENDIF.
+    SELECT SINGLE ebeln,bukrs,ekgrp
+      FROM ekko
+      INTO @DATA(ls_ekko)
+      WHERE ebeln EQ @lv_ebeln.
+    IF sy-subrc EQ 0.
+      IF ls_ekko-ekgrp IS NOT INITIAL.
+      SELECT SINGLE ekgrp,eknam, ektel, telfx, smtp_addr "#EC CI_SUBRC
+        FROM t024
+        INTO @DATA(ls_pur_grp)
+        WHERE ekgrp = @ls_ekko-ekgrp.
+       IF sy-subrc eq 0.
+         er_entity-eknam = ls_pur_grp-eknam.
+         er_entity-ekgrp = ls_pur_grp-ekgrp.
+         er_entity-tel_number = ls_pur_grp-ektel.
+         er_entity-smtp_addr = ls_pur_grp-smtp_addr.
+       ENDIF.
+    ENDIF.
+      ENDIF.
+
+  endmethod.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->SHIPTOPARTNERS_GET_ENTITY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IO_REQUEST_OBJECT              TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [<---] ER_ENTITY                      TYPE        CL_FDP_EF_PURCHASE_ORD_MPC=>TS_SHIPTOPARTYNODE
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD shiptopartners_get_entity.
+*&---------------------------------------------------------------------*
+*& Method         SHIPTOPARTNERS_GET_ENTITY
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  08/30/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+    DATA ls_po_key     TYPE /iwbep/s_mgw_name_value_pair.
+    DATA lv_ebeln     TYPE ebeln.
+    DATA lv_address     TYPE adrnr.
+    DATA lv_count TYPE i.
+
+    CLEAR: er_entity,
+           es_response_context,lv_ebeln.
+
+* Sanity Check
+
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+
+    IF ls_po_key-value IS NOT INITIAL.
+      lv_ebeln = ls_po_key-value.
+
+
+      SELECT ebeln,ebelp,bukrs,werks,lgort
+        FROM ekpo
+        INTO TABLE @DATA(lt_ekpo)
+        WHERE ebeln = @lv_ebeln.
+      LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs_ekpo>).
+        LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs1_ekpo>) WHERE werks NE <fs_ekpo>-werks.
+          lv_count = lv_count + 1.
+        ENDLOOP.
+      ENDLOOP.
+
+      IF lv_count   EQ 0.
+        LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs_ekpo1>).
+          LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs1_ekpo1>) WHERE lgort NE <fs_ekpo1>-lgort."werks NE <fs_ekpo1>-werks AND
+            lv_count = lv_count + 1.
+          ENDLOOP.
+        ENDLOOP.
+
+      ENDIF.
+      IF lv_count   EQ 0.
+
+
+        DATA(ls_ekpo) = lt_ekpo[ 1 ].
+
+
+        IF sy-subrc EQ 0.
+          IF ls_ekpo-werks IS NOT INITIAL.
+            SELECT SINGLE werks,adrnr
+              FROM t001w
+              INTO @DATA(ls_plant)
+              WHERE werks EQ @ls_ekpo-werks.
+            IF sy-subrc EQ 0.
+            ENDIF.
+
+            IF ls_ekpo-lgort IS NOT INITIAL.
+              SELECT SINGLE werks,lgort,lfdnr,adrnr
+                FROM twlad
+                INTO @DATA(ls_sloc)
+                WHERE werks EQ @ls_ekpo-werks
+                AND lgort EQ @ls_ekpo-lgort.
+              IF sy-subrc EQ 0.
+              ENDIF.
+            ENDIF.
+          ENDIF.
+
+          IF ls_plant-adrnr EQ ls_sloc-adrnr.
+            lv_address = ls_sloc-adrnr.
+          ELSE.
+            IF ls_sloc-adrnr IS NOT INITIAL.
+              lv_address = ls_sloc-adrnr.
+            ELSEIF ls_plant-adrnr IS NOT INITIAL.
+              lv_address = ls_plant-adrnr.
+            ENDIF.
+          ENDIF.
+
+          SELECT SINGLE *
+            FROM adrc
+            INTO @DATA(ls_adrc)
+            WHERE addrnumber = @lv_address.
+          IF sy-subrc EQ 0.
+            SELECT SINGLE spras , land1 ,landx
+              FROM t005t
+              INTO @DATA(ls_country)
+              WHERE  land1 = @ls_adrc-country
+              AND spras EQ @ls_adrc-langu.
+            IF sy-subrc EQ 0.
+            ENDIF.
+            IF ls_ekpo-bukrs NE '1710'.
+              SELECT SINGLE spras,land1,bland,bezei
+                FROM t005u
+                INTO @DATA(ls_region)
+                WHERE spras EQ @ls_adrc-langu
+                AND land1 = @ls_adrc-country
+                AND bland = @Ls_ADRC-region.
+              IF sy-subrc EQ 0.
+              ENDIF.
+            ENDIF.
+            SELECT SINGLE langu,title,title_medi
+              FROM tsad3t
+              INTO @DATA(ls_tittle)
+              WHERE langu EQ @ls_adrc-langu
+              AND title EQ @ls_adrc-title.
+            IF sy-subrc EQ 0.
+
+            ENDIF.
+
+            er_entity-adrnr = lv_address.
+            er_entity-address_line_1 = ls_tittle-title_medi.
+            er_entity-address_line_2 = ls_adrc-name1.
+            er_entity-address_line_3 = ls_adrc-str_suppl1 && | | && ls_adrc-str_suppl2.
+            er_entity-address_line_4 = ls_adrc-house_num1 && | | && ls_adrc-street.
+            er_entity-address_line_5 = ls_adrc-str_suppl3.
+            er_entity-address_line_6 = ls_adrc-location.
+            er_entity-address_line_7 = ls_adrc-city1 && | | && ls_adrc-city2
+                                        && | | &&  ls_region-bezei && | | && ls_adrc-post_code1.
+            er_entity-address_line_8 = ls_country-landx.
+            CONDENSE:er_entity-adrnr,
+                     er_entity-address_line_1,er_entity-address_line_2,
+                     er_entity-address_line_3,er_entity-address_line_4,
+                     er_entity-address_line_5,er_entity-address_line_6,
+                     er_entity-address_line_7,er_entity-address_line_8.
+          ENDIF.
+
+
+        ENDIF.
+      ENDIF.
+    ENDIF.
+*    ENDIF.
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->SHIPTO_ITEMNODES_GET_ENTITY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IO_REQUEST_OBJECT              TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [<---] ER_ENTITY                      TYPE        ZCL_ZZ_PTR_019_PURCHAS_MPC=>TS_SHIPTOPARTYITEMNODE
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD shipto_itemnodes_get_entity.
+*&---------------------------------------------------------------------*
+*& Method         SHIPTO_ITEMNODES_GET_ENTITY
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  08/30/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+
+    DATA ls_po_key    TYPE /iwbep/s_mgw_name_value_pair.
+    DATA ls_item_key  TYPE /iwbep/s_mgw_name_value_pair.
+    DATA lv_ebeln     TYPE ebeln.
+    DATA lv_ebelp     TYPE ebelp.
+    DATA lv_address     TYPE adrnr.
+    DATA lv_count TYPE i.
+
+    CLEAR :  es_response_context,ls_item_key,ls_item_key ,lv_ebeln,lv_ebelp,er_entity.
+*    REFRESH et_entityset.
+
+* Sanity Check
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+    IF sy-subrc = 0.
+      lv_ebeln = ls_po_key-value.
+
+* Item
+      READ TABLE it_key_tab
+           WITH KEY name = 'PurchaseOrderItem'
+           INTO ls_item_key.
+      IF sy-subrc = 0.
+        lv_ebelp = ls_item_key-value.
+
+        SELECT ebeln,ebelp,bukrs,werks,lgort
+          FROM ekpo
+          INTO TABLE @DATA(lt_ekpo)
+          WHERE ebeln = @lv_ebeln.
+        "AND ebelp = @lv_ebelp.
+        LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs_ekpo>).
+          LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs1_ekpo>) WHERE werks NE <fs_ekpo>-werks.
+            lv_count = lv_count + 1.
+          ENDLOOP.
+        ENDLOOP.
+
+        IF lv_count   EQ 0.
+          LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs_ekpo1>).
+            LOOP AT lt_ekpo ASSIGNING FIELD-SYMBOL(<fs1_ekpo1>) WHERE lgort NE <fs_ekpo1>-lgort."werks NE <fs_ekpo1>-werks AND
+              lv_count = lv_count + 1.
+            ENDLOOP.
+          ENDLOOP.
+
+        ENDIF.
+
+        IF lv_count NE 0.
+
+
+          SELECT SINGLE ebeln,ebelp,bukrs,werks,lgort
+            FROM ekpo
+            INTO @DATA(ls_ekpo)
+            WHERE ebeln = @lv_ebeln
+            AND ebelp = @lv_ebelp.
+
+          IF sy-subrc EQ 0.
+            IF ls_ekpo-werks IS NOT INITIAL.
+              SELECT SINGLE werks,adrnr
+                FROM t001w
+                INTO @DATA(ls_plant)
+                WHERE werks EQ @ls_ekpo-werks.
+              IF sy-subrc EQ 0.
+              ENDIF.
+
+              IF ls_ekpo-lgort IS NOT INITIAL.
+                SELECT SINGLE werks,lgort,lfdnr,adrnr
+                  FROM twlad
+                  INTO @DATA(ls_sloc)
+                  WHERE werks EQ @ls_ekpo-werks
+                  AND lgort EQ @ls_ekpo-lgort.
+                IF sy-subrc EQ 0.
+                ENDIF.
+              ENDIF.
+            ENDIF.
+
+            IF ls_plant-adrnr EQ ls_sloc-adrnr.
+              lv_address = ls_sloc-adrnr.
+            ELSE.
+              IF ls_sloc-adrnr IS NOT INITIAL.
+                lv_address = ls_sloc-adrnr.
+              ELSEIF ls_plant-adrnr IS NOT INITIAL.
+                lv_address = ls_plant-adrnr.
+              ENDIF.
+            ENDIF.
+
+            SELECT SINGLE *
+              FROM adrc
+              INTO @DATA(ls_adrc)
+              WHERE addrnumber = @lv_address.
+            IF sy-subrc EQ 0.
+              SELECT SINGLE spras , land1 ,landx
+                FROM t005t
+                INTO @DATA(ls_country)
+                WHERE  land1 = @ls_adrc-country
+                AND spras EQ @ls_adrc-langu.
+              IF sy-subrc EQ 0.
+              ENDIF.
+              IF ls_ekpo-bukrs NE '1710'.
+                SELECT SINGLE spras,land1,bland,bezei
+                  FROM t005u
+                  INTO @DATA(ls_region)
+                  WHERE spras EQ @ls_adrc-langu
+                  AND land1 = @ls_adrc-country
+                  AND bland = @Ls_ADRC-region.
+                IF sy-subrc EQ 0.
+                ENDIF.
+              ENDIF.
+              SELECT SINGLE langu,title,title_medi
+                FROM tsad3t
+                INTO @DATA(ls_tittle)
+                WHERE langu EQ @ls_adrc-langu
+                AND title EQ @ls_adrc-title.
+              IF sy-subrc EQ 0.
+
+              ENDIF.
+
+              er_entity-adrnr = lv_address.
+              er_entity-address_line_1 = ls_tittle-title_medi.
+              er_entity-address_line_2 = ls_adrc-name1.
+              er_entity-address_line_3 = ls_adrc-str_suppl1 && | | && ls_adrc-str_suppl2.
+
+*              APPEND INITIAL LINE TO et_entityset ASSIGNING FIELD-SYMBOL(<fs_address>).
+              er_entity-ebeln = lv_ebeln.
+              er_entity-ebelp = lv_ebelp.
+*              er_entity-adrnr = lv_address.
+*              er_entity-address_line_1 = ls_adrc-name1.
+*              er_entity-address_line_2 = ls_adrc-str_suppl1.
+*              er_entity-address_line_3 = ls_adrc-str_suppl2.
+              er_entity-address_line_4 = ls_adrc-house_num1 && | | && ls_adrc-street.
+              er_entity-address_line_5 = ls_adrc-str_suppl3.
+              er_entity-address_line_6 = ls_adrc-location.
+              er_entity-address_line_7 = ls_adrc-city1 && | | && ls_adrc-city2
+                                          && | | &&  ls_region-bezei && | | && ls_adrc-post_code1.
+              er_entity-address_line_8 = ls_country-landx.
+              CONDENSE:er_entity-ebeln,er_entity-ebelp,er_entity-adrnr,
+                       er_entity-address_line_1,er_entity-address_line_2,
+                       er_entity-address_line_3,er_entity-address_line_4,
+                       er_entity-address_line_5,er_entity-address_line_6,
+                       er_entity-address_line_7,er_entity-address_line_1.
+            ENDIF.
+
+
+          ENDIF.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->SUBCONTRACTING_COMP_GET_ENTITY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IO_REQUEST_OBJECT              TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [<---] ER_ENTITY                      TYPE        ZCL_ZZ_PTR_019_PURCHAS_MPC=>TS_POSUBCONTRACTINGCOMPONENT
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD subcontracting_comp_get_entity.
+*&---------------------------------------------------------------------*
+*& Method         SUBCONTRACTING_COMP_GET_ENTITY
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  09/07/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+
+    DATA lv_count       TYPE int4 VALUE 0.
+
+    DATA: "LS_ITEM                LIKE LINE OF MT_SUBCONTRACTING_COMPONENTS,
+      ls_po_key              TYPE /iwbep/s_mgw_name_value_pair,
+      ls_po_item_key         TYPE /iwbep/s_mgw_name_value_pair,
+      ls_po_item_sch_key     TYPE /iwbep/s_mgw_name_value_pair,
+      ls_po_item_sch_res_key TYPE /iwbep/s_mgw_name_value_pair,
+      lv_text                TYPE tdtext,
+      lv_objname             TYPE tdobname.
+
+
+    CLEAR :  ls_po_key ,ls_po_item_key ,er_entity,ls_po_item_sch_key,ls_po_item_sch_res_key.
+    "et_entityset,
+    "es_response_context.
+
+    READ TABLE it_key_tab
+             WITH KEY name = 'PurchaseOrder'
+             INTO ls_po_key.
+
+    READ TABLE it_key_tab
+             WITH KEY name = 'PurchaseOrderItem'
+             INTO ls_po_item_key.
+
+    READ TABLE it_key_tab
+             WITH KEY name = 'PurchaseOrderScheduleLine'
+             INTO ls_po_item_sch_key.
+
+    READ TABLE it_key_tab
+             WITH KEY name = 'ReservationItem'
+             INTO ls_po_item_sch_res_key.
+
+
+    IF sy-subrc EQ 0.
+      SELECT SINGLE ebeln,BUKRS FROM ekko
+        INTO @DATA(ls_ekko)
+        WHERE ebeln EQ @ls_po_key-value.
+      IF sy-subrc EQ 0.
+
+      ENDIF.
+      SELECT SINGLE rsnum , rspos,bdter,matnr,werks,ebeln,ebelp,ebele FROM resb
+        INTO @DATA(ls_comp)
+        WHERE rspos = @ls_po_item_sch_res_key-value
+        AND ebeln EQ @ls_po_key-value
+        AND ebele EQ @ls_po_item_sch_key-value
+        AND ebelp EQ @ls_po_item_key-value.
+      IF sy-subrc EQ 0.
+        er_entity-purchaseorder = ls_comp-ebeln.
+        er_entity-purchaseorderitem = ls_comp-ebelp.
+        er_entity-purchaseorderscheduleline = ls_comp-ebele.
+        er_entity-reservationitem = ls_comp-rspos.
+*          er_entity-bdter = ls_comp-bdter.
+*        MOVE ls_comp-bdter TO er_entity-bdter.
+*        break akumar.
+        IF ls_ekko-BUKRS EQ '5410'.
+*          write ls_comp-bdter to er_entity-bdter DD/MM/YYYY .
+          concatenate ls_comp-bdter+6(2) ls_comp-bdter+4(2) ls_comp-bdter+0(4) into er_entity-bdter separated by '/'.
+          else.
+*            write ls_comp-bdter to er_entity-bdter mm/dd/yyyy.
+            concatenate ls_comp-bdter+4(2) ls_comp-bdter+6(2)  ls_comp-bdter+0(4) into er_entity-bdter separated by '/'.
+        ENDIF.
+
+
+      ENDIF.
+    ENDIF.
+  ENDMETHOD.
+
+
+* <SIGNATURE>---------------------------------------------------------------------------------------+
+* | Instance Protected Method ZCL_ZZ_PTR_019_PURCHAS_DPC_EXT->SUPPLIERS_GET_ENTITY
+* +-------------------------------------------------------------------------------------------------+
+* | [--->] IV_ENTITY_NAME                 TYPE        STRING
+* | [--->] IV_ENTITY_SET_NAME             TYPE        STRING
+* | [--->] IV_SOURCE_NAME                 TYPE        STRING
+* | [--->] IT_KEY_TAB                     TYPE        /IWBEP/T_MGW_NAME_VALUE_PAIR
+* | [--->] IO_REQUEST_OBJECT              TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IO_TECH_REQUEST_CONTEXT        TYPE REF TO /IWBEP/IF_MGW_REQ_ENTITY(optional)
+* | [--->] IT_NAVIGATION_PATH             TYPE        /IWBEP/T_MGW_NAVIGATION_PATH
+* | [<---] ER_ENTITY                      TYPE        CL_FDP_EF_PURCHASE_ORD_MPC=>TS_SUPPLIERNODE
+* | [<---] ES_RESPONSE_CONTEXT            TYPE        /IWBEP/IF_MGW_APPL_SRV_RUNTIME=>TY_S_MGW_RESPONSE_ENTITY_CNTXT
+* | [!CX!] /IWBEP/CX_MGW_BUSI_EXCEPTION
+* | [!CX!] /IWBEP/CX_MGW_TECH_EXCEPTION
+* +--------------------------------------------------------------------------------------</SIGNATURE>
+  METHOD suppliers_get_entity.
+*&---------------------------------------------------------------------*
+*& Method         SUPPLIERS_GET_ENTITY
+*&---------------------------------------------------------------------*
+* Title:          PURCHASE ORDER FORM
+* RICEF#:         19
+* Transaction:    ME23N
+*---------------------------------------------------------------------
+* Copyright:      NDBS, Inc.
+* Client:         Flexsys America, L.P.
+*---------------------------------------------------------------------
+* Developer:      Amit Kumar
+* Creation Date:  08/30/2022
+* Description:    PURCHASE ORDER FORM
+*---------------------------------------------------------------------
+* Modification History
+*---------------------------------------------------------------------
+* Modified by:    <Developer (full name and user name)>
+* Date:           <Date>
+* Transport:      <Transport Request #>
+* Description:
+* <Description of the change (or the source for the initial
+* creation if a template or SAP program was used as a starting point>
+*---------------------------------------------------------------------
+    DATA ls_po_key     TYPE /iwbep/s_mgw_name_value_pair.
+    DATA lv_adrnr      TYPE adrnr.
+
+    CLEAR: er_entity,
+           es_response_context.
+
+
+    READ TABLE it_key_tab
+         WITH KEY name = 'PurchaseOrder'
+         INTO ls_po_key.
+
+    IF ls_po_key-value IS NOT INITIAL.
+      SELECT SINGLE ebeln,bukrs,lifnr
+        FROM ekko
+        INTO @DATA(ls_address)
+        WHERE ebeln EQ @ls_po_key-value.
+      IF sy-subrc EQ 0.
+        SELECT SINGLE lifnr, adrnr
+          FROM lfa1
+          INTO @DATA(ls_adrnr)
+          WHERE lifnr EQ @ls_address-lifnr.
+        IF sy-subrc EQ 0.
+
+        ENDIF.
+
+      ENDIF.
+* Retrieve PO Address from PO Header CDS (contains PO Address in case it deviates from the supplier address)
+*      SELECT SINGLE manualsupplieraddressID  ##WARN_OK
+*        FROM i_purchaseorder
+*        INTO @lv_adrnr
+*        WHERE purchaseorder = @ls_po_key-value  ##DB_FEATURE_MODE[AMDP_TABLE_FUNCTION].
+
+* in case PO Address is filled, overwrite supplier master address
+      IF ls_adrnr IS NOT INITIAL.
+        er_entity-adrnr = ls_adrnr-adrnr.
+      ENDIF.
+
+      IF er_entity-adrnr IS NOT INITIAL.
+* retrieve address line 1 - 8
+        SELECT SINGLE * FROM adrc INTO @DATA(lv_adrc) WHERE addrnumber = @er_entity-adrnr.
+        IF sy-subrc EQ 0.
+          SELECT SINGLE spras , land1 ,landx
+            FROM t005t
+            INTO @DATA(ls_country)
+            WHERE  land1 = @lv_adrc-country
+            AND spras EQ @lv_adrc-langu.
+          IF sy-subrc EQ 0.
+          ENDIF.
+          IF ls_address-bukrs NE '1710'.
+
+            SELECT SINGLE spras,land1,bland,bezei
+              FROM t005u
+              INTO @DATA(ls_region)
+              WHERE spras EQ @lv_adrc-langu
+              AND land1 = @lv_adrc-country
+              AND bland = @lv_adrc-region.
+            IF sy-subrc EQ 0.
+            ENDIF.
+          ENDIF.
+
+          er_entity-address_line_1 = lv_adrc-name1.
+          er_entity-address_line_2 = lv_adrc-str_suppl1.
+          er_entity-address_line_3 = lv_adrc-str_suppl2.
+          er_entity-address_line_4 = lv_adrc-house_num1 && | | && lv_adrc-street.
+          er_entity-address_line_5 = lv_adrc-str_suppl3.
+          er_entity-address_line_6 = lv_adrc-location.
+          er_entity-address_line_7 = lv_adrc-city1 && | | && lv_adrc-city2
+                                      && | | &&  ls_region-bezei && | | && lv_adrc-post_code1.
+          er_entity-address_line_8 = ls_country-landx.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+
+  ENDMETHOD.
+ENDCLASS.
